@@ -1,0 +1,43 @@
+id,project,bodyText,label,tfidf_prediction,semantic_prediction,tfidf_correct,semantic_correct,disagreement
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQyNDQyNjYwNg==,apache/activemq-artemis,Seems like this might be unused now that the loop it was in before is gone?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM4Njc0MzQ0Ng==,apache/helix,log error (or warning) if any mismatch keys.,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM3NDkzMjg4Mw==,aws-greengrass/aws-greengrass-nucleus,Anything here?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQxMzU2NjAzNQ==,crate/crate,4.2,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM4NTExMTM4NA==,crate/crate,Suggested change                                                                                                    private final Expression expression;                                                    private final T expression;,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQwNDY1MzkyNw==,crate/crate,maybe worth adding an assertion to ensure its a boolean? Is this ensured somewhere else? otherwise it should throw an exception here.,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ5MTcyNDIyOQ==,cucumber/common,For consistency I've split Object and String.,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM3NTk1MzYxNg==,cucumber/common,Suggested change                                                                                                public class UndefinedParameterTypeExpression implements Expression {                                                final class UndefinedParameterTypeExpression implements Expression {,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUyNjkwNTY3Ng==,cucumber/common,"Suggested change                                                                                                                        throw new RuntimeException(String.format(""Not JSON: %s"", line));                                                                        throw new RuntimeException(String.format(""Not JSON: %s"", line), e);",0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQyNzg0NTQwMg==,cucumber/common,"I'd love to be rid of this bit of mutable state. Perhaps we can do this: Expression exp = TagExpressionParser.parse(""@food"");  And then internally public static Expression parse(String infix){   return new TagExpressionParser(infix).parse(); }",0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM4ODkyNTQwNg==,eclipse/xtext-core,Collections.emptyMap,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQzMjM1MTAyMA==,eclipse/xtext-core,map(Either::forRight).collection(..) ?,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM5NTYzOTA4OA==,eclipse/xtext-core,Update date,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUwMTA5NjcwMQ==,epam/cloud-pipeline,Could you please make this method static?,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ1OTc3ODIwMg==,google/ground-android,This can return Completable instead.,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU0NjI1NjAzNA==,graphhopper/graphhopper,Ah nice 👍. I also like Statement better than Clause and Keyword is better than Cond.,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ5ODgyNjU5Mg==,inria/spoon,split it in 3 testcases?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUzMDQ5NjE5OQ==,languagetool-org/languagetool,"As this is public, it might be in use somewhere and probably shouldn't be removed?",1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ4Njg2ODg2MA==,linkedin/rest.li,This and the previous method seem identical except for the input/output directories. Can we de-duplicate the logic?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM3NDA1MTU4NQ==,oracle/helidon,"I do not think the .flavor() method is good. We do not control the time when the flavor is configured and this is not the intention (HelidonFeatures task is to list features of Helidon, not to handle the flavor of Helidon). Also the approach for thread pools is to use one of the existing ThreadPoolSupplier classes, that already handle lazy initiialization. If you do not need an executor in SE, than why is this method in this class? It should be in the CDI extension for WebSockets, and the TyrusSupport class should only provider features to handle the SE model (with capability to build the MP model on top of it).",1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ1MDk4Mzc2NA==,palantir/gradle-baseline,"No suggested fix to lop off a few unimportant params? ;-) We might want to add something to the message suggesting an args object with a builder, potentially recommending immutables.",0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQzOTMzNzE1Nw==,seata/seata,"How about change to final Map<String, ColumnMeta> primaryKeyMap = getTableMeta().getPrimaryKeyMap(); ... if (primaryKeyMap.containsKey(field.getName())) {",0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ1MzMzMzI0MQ==,seata/seata,Specifies beans that won't be scanned in the GlobalTransactionScanner,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ3Mjg1OTgxNQ==,smallrye/smallrye-reactive-messaging,Should have been received?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQxODQ2Nzk3MQ==,sonarsource/sonar-java,"The test about hasSemantic() is useful for checks that extends IssuableSubscriptionVisitor. But because AbstractMethodDetection already do this test, we don't need it.",1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUxODA1NDk5Mw==,trinodb/trino,extract into separate method,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUyNTUzMzMxNw==,trinodb/trino,Same comment as above about isAssignableFrom,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ3NTg3NzU1Ng==,unicode-org/cldr,This is a new class that uses the canonicalization of the LSRV part of a locale identifier to verify correctness of the algorithm and test data.,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ2NTQyMTE4Ng==,unicode-org/cldr,Nitpick: the cast to IllegalArgumentException is not needed.,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ5MjE2ODQ4MA==,yugabyte/tpcc,Do we need this log here or was it just for debugging?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQxMDY5MjI3Mw==,checkstyle/checkstyle,Usually it says To configure the check:,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ5Mzk3MTk1OA==,google/ground-android,#ERROR!,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM2NDgxMzQyOA==,graylog2/graylog2-server,We should add an entry to misc/graylog.conf including a comment that describes the available options.,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ1NTk1ODQyMA==,hashgraph/hedera-mirror-node,Should be 5000 to match readme and properties,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU0NTc1NjQ2OA==,nextcloud/android,Same here. I would have thought that AS is doing this correct automatically?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQ0Nzk2MjM4MA==,opendistro-for-elasticsearch/anomaly-detection,"external might be confusing as in the CI we are actually using localhost. Maybe we can just say ""cluster url should be provided for security enabled testing""",1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQwNzkyNjAxMA==,opendistro-for-elasticsearch/anomaly-detection,"How about we change to ""Must set at least one profile type"" to avoid confusion between empty profile types and wrong profile types which we don't support?",1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDU5Nzg3ODg5MQ==,openhab/openhab-addons,What is the reason for requesting all vehicles from the API? Can't you access the bridge's Things?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDQwMjc1MTYwMg==,openhab/openhab-addons,Shouldn't this change the thing status to OFFLINE?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUzMTIxMzI2Mg==,reactor/reactor-core,Seems a bit blunt to use a tag and custom logic in this class. Why not @After or @AfterAll in LoggersTest only?,1,0,0,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDM5MzY3NjU3NQ==,sonarsource/sonar-java,Should we add MethodMatchers.Builder ofType(String... fullyQualifiedTypeName); ?,0,1,1,False,False,False
+MDI0OlB1bGxSZXF1ZXN0UmV2aWV3Q29tbWVudDUyMjA1Njk2NA==,trinodb/trino,#ERROR!,0,1,1,False,False,False

@@ -1,0 +1,13 @@
+{
+    "split_type": "project_grouped",
+    "embedding_model": "sentence-transformers/all-mpnet-base-v2",
+    "embedding_dimension": 768,
+    "max_seq_length": 384,
+    "normalize_embeddings": false,
+    "standardize_embeddings": false,
+    "best_C": 1.0,
+    "class_weight": "balanced",
+    "validation_macro_f1": 0.7287157287157287,
+    "best_threshold": 0.4665491273905974,
+    "default_threshold_validation_macro_f1": 0.7255019080803053
+}
