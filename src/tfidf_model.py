@@ -113,46 +113,46 @@ def train_tfidf(split_type):
             for class_weight in CLASS_WEIGHTS:
 
                 model = Pipeline([
-                ("features", FeatureUnion([
-                    ("word", TfidfVectorizer(
-                        analyzer="word",
-                        ngram_range=config["word_ngrams"],
-                        token_pattern=r"(?u)\b\w+\b",
-                        min_df=config["min_df"],
-                        sublinear_tf=True
-                    )),
-                    ("char", TfidfVectorizer(
-                        analyzer="char",
-                        ngram_range=config["char_ngrams"],
-                        min_df=config["min_df"],
-                        max_features=30000,
-                        sublinear_tf=True
+                    ("features", FeatureUnion([
+                        ("word", TfidfVectorizer(
+                            analyzer="word",
+                            ngram_range=config["word_ngrams"],
+                            token_pattern=r"(?u)\b\w+\b",
+                            min_df=config["min_df"],
+                            sublinear_tf=True
+                        )),
+                        ("char", TfidfVectorizer(
+                            analyzer="char",
+                            ngram_range=config["char_ngrams"],
+                            min_df=config["min_df"],
+                            max_features=30000,
+                            sublinear_tf=True
+                        ))
+                    ])),
+                    ("classifier", LogisticRegression(
+                        C=C,
+                        class_weight=class_weight,
+                        max_iter=2000,
+                        random_state=42
                     ))
-                ])),
-                ("classifier", LogisticRegression(
-                    C=C,
-                    class_weight="balanced",
-                    max_iter=2000,
-                    random_state=42
-                ))
-            ])
+                ])
 
-            model.fit(X_train, y_train)
-            predictions = model.predict(X_val)
-            macro_f1 = f1_score(y_val, predictions, average="macro")
-            print(f"Word n-grams: {config['word_ngrams']}, " f"Char n-grams: {config['char_ngrams']}, " f"C: {C}, " f"Class weight: {class_weight}, " f"Validation Macro-F1: {macro_f1:.4f}")
+                model.fit(X_train, y_train)
+                predictions = model.predict(X_val)
+                macro_f1 = f1_score(y_val, predictions, average="macro")
+                print(f"Word n-grams: {config['word_ngrams']}, " f"Char n-grams: {config['char_ngrams']}, " f"C: {C}, " f"Class weight: {class_weight}, " f"Validation Macro-F1: {macro_f1:.4f}")
 
-            if macro_f1 > best_score:
-                best_score = macro_f1
-                best_model = model
-                best_params = {
-                    "word_ngram_range": list(config["word_ngrams"]),
-                    "char_ngram_range": list(config["char_ngrams"]),
-                    "min_df": config["min_df"],
-                    "sublinear_tf": True,
-                    "C": C,
-                    "class_weight": class_weight
-                }
+                if macro_f1 > best_score:
+                    best_score = macro_f1
+                    best_model = model
+                    best_params = {
+                        "word_ngram_range": list(config["word_ngrams"]),
+                        "char_ngram_range": list(config["char_ngrams"]),
+                        "min_df": config["min_df"],
+                        "sublinear_tf": True,
+                        "C": C,
+                        "class_weight": class_weight
+                    }
 
     # best_predictions = best_model.predict(X_val)
     
@@ -186,10 +186,9 @@ def train_tfidf(split_type):
     results = {
         "split_type": split_type,
         "best_hyperparameters": best_params,
-        "validation_macro_f1": best_score,
+        "validation_macro_f1": float(best_score),
         "best_threshold": float(best_threshold),
-    "default_threshold_validation_macro_f1": float(default_f1),
-    "validation_macro_f1": float(best_score)
+        "default_threshold_validation_macro_f1": float(default_f1),
     }
 
     with open(metrics_dir / "tfidf_validation.json", "w", encoding="utf-8") as file:

@@ -1,0 +1,20 @@
+{
+    "split": "project_grouped",
+    "variant": "word_char",
+    "C": 0.1,
+    "class_weight": "balanced",
+    "decision_threshold": 0.50020599668006,
+    "default_validation_macro_f1": 0.7140727714273751,
+    "optimized_validation_macro_f1": 0.7167002012072434,
+    "accuracy": 0.7909604519774012,
+    "macro_precision": 0.7904739479969054,
+    "macro_recall": 0.7808018729880012,
+    "macro_f1": 0.783897046691965,
+    "positive_precision": 0.7883211678832117,
+    "positive_recall": 0.7058823529411765,
+    "positive_f1": 0.7448275862068966,
+    "tn": 172,
+    "fp": 29,
+    "fn": 45,
+    "tp": 108
+}

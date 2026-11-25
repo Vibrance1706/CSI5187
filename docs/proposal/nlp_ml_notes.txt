@@ -1,0 +1,103 @@
+Use a supervised ML project to understand whether the meaning of a code review comment can be used to explain the intent behind the comment. Eg: Comment: “Can you rename this variable to make its purpose clearer?”, review category: Understandability-related comment.
+
+The categories of reviews can overlap. Eg: a bug might be identified and a clear implementation can also be suggested. A comment might communicate an understandability related concern without explaining about readability.
+
+Problem trying to address: identifying all understandability-related comments manually is time-consuming specially in large s/w repos. We aspire to train a ML classifier that reads review comment and categorises it into the understandability related category or not.
+
+SE problem addressed: comments help devs to comprehend, modify, debug and maintain software. The automatic classification can help researchers identify how devs communicate about code with clarity.
+
+RQs: Can NLP and machine learning models automatically identify code-review comments that are related to code understandability improvements? [automation of classification task with useful predictive performance]
+
+Do semantic representations provide better classification performance than traditional lexical representations for detecting code-understandability comments?
+(planning to compare tf-idf to represent comments using weighted word occurrences and sentence transformer to represent comments using using numerical vectors designed to capture sentence-level meaning)
+
+Dataset: CODE-UP was chosen because it had the required examples with paired correct answers. They have already been classified as Yes and No for understandability related comments. The text marked as discard will be ignored. bodyText is the primary field of interest.
+
+Two types of comments exist implicit (indirect suggestion if understandability) and explicit (express question regarding the understandability up front)
+
+The main experiment is binary classification Yes vs No, we aren't considering implicit vs explicit comments.
+
+TF_IDF is used to identify lexical patterns. Most of the cells will be 0. But frequently occurring words can be associated with the labels. Term Frequency (TF) is calculated within each individual code-review comment, whereas Inverse Document Frequency (IDF) is calculated across the collection of code-review comments in the training set.
+
+Sparse lexical features to Logistic regression
+
+Sentence transformer used for semantic representation, planning g to use pretrained all-mpnet-base-v2 model from the Sentence Transformers family. 
+all-mpnet-base-v2 was chosen because it is a pretrained transformer to produce dense embeddings intended to capture sentence-level meaning. We can avoid training the transformer .Designed for producing short paragraph embeddings. A faster smaller alternative would be all-MiniLM-L6-v2, but since the dataset size is small we plan to sick with all-mpnet-base-v2. Our goal is to not establish which is superior, but to perform a comparative study.
+
+768 dimensional embeddings to Logistic regression
+
+Dataset split: 
+
+Using Stratified 70/15/15 split and not CV . Done to preserve class proportions. One limitation of this would be that we have 2,345 comments come from 363 projects, if comments form one project appear in appear in both training and testing, the evaluation may be easier than testing on entirely unseen projects, if time permits we intend to perform a project level split.
+
+A moderate imbalance is observed. We can use sci-kit learns class_weight=balanced to give more importance to the minority class.
+
+Error analysis:
+Lexical errors: TF-IDF misclassification cuz of unusual vocab.
+Semantic errors: confusion by sentence transformer of understandability with allied ideas, like correctness or others. 
+Ambiguous comments
+Disagreements: TF-IDF predicts yes and sentence transformer predicts no and vice versa
+
+Since we primarily consider bodyText, the classifier won't be able to access the code surrounding it. If a comment relies heavily on missing context neither would classify correectly. 
+
+
+
+Paper 1 - Understanding Code Understandability Improvements in Code Reviews: (most relevant to our project). It is the central source and provides domain specific grounding for our idea.
+
+Establishes that code understandability is a meaningful subject of empirical software engineering research.
+
+Provides the code up dataset used in the experiment.
+
+Defines whether a review comment relates to improving code understandability, conceptually.
+
+The original work in understandability focuses on improvements in code reviews;, our project investigates whether machine learning can automatically recognize comments associated with those improvements using different text representations.
+
+Paper 2 - Classifying Code Comments in Java Software Systems
+
+This paper examines the purpose of source code comments. The authors develop a taxonomy of comments and manually classify more than 40000 lines of comments in java projects.
+
+Source code comments and code review comments are different types of text. A source-code comment is embedded in a codebase, perhaps explaining an implementation decision or documenting a method. A code-review comment is written during a review and responds to a proposed change.
+
+It has been cited because it establishes automatic classification of software-related textual content using machine learning is a recognized research direction.
+
+We don't intend to classify comments from java's source code, rather classify review comments according to their relationship to code understandability. \
+
+the paper doesn't demonstrate e that TF-IDF or Sentence Transformers will work well for your particular CODE-UP task.
+
+Paper 3 - Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks
+
+Our semantic approach requires sentence embeddings, so this paper was cited as it has the underlying research idea that text can be encoded into dense numerical vectors that capture semantic relationships.
+
+We do intend to use the all-mpnet-base-v2a and not a sentence-bert model that we trained from scratch. We use this paper to support the general sentence embedding approach.
+
+Paper 4  - Term-Weighting Approaches in Automatic Text Retrieval
+
+We need a lexical baseline to compare the semantic embeddings with. For converting review comments into weighted word vectors.
+
+It is quite old, but the underlying problem of representing text through weighted terms remains relevant. Since we deliberately compare a traditional lexical approach to a modern semantic approach.
+
+Paper - 5: What Happens in My Code Reviews? An Investigation on Automatically Classifying Review Changes
+
+Review changes are classified automatically using a supervised ML approach and investigate if the info.is useful to the devs. Review changes is a modification made to the code during the review process.
+
+The comment and the change are related but they are different objects and can be analysed separately
+
+It was cited as it provided the possibility of applying supervised machine learning to the analysis of code-review activities.
+
+Paper - 6: Leveraging Reviewer Experience in Code Review Comment Generation
+
+Automatic generation of code review comments and the role of reviewer in this process. Discusses LLMs that produce NL feedback on proposed code changes.
+
+It demonstrates that automated review analysis is an established direction of research, while our project focuses on the linguistic content of comments and their relationship to understandability. It was cited as it can possibly be used in our final project report.
+
+Paper - 7: Exploring the Potential of Large Language Models in Fine-Grained Review Comment Classification
+
+This was considered as a  Fine-grained classification typically distinguishes among more specific categories rather than assigning all comments to a single broad class. Our project uses a binary classification for understandability-related and not understandability-related comments. A fine grained would've several output classes, but our model only  has 2.
+
+Included as it could possibly, help us position our project against other approaches to review-comment classification and motivate the importance of choosing suitable textual representations.
+
+Paper - 8: Supporting the Identification of Prevalent Quality Issues in Code Changes by Analyzing Reviewers' Feedback
+
+A JabRef system is used to investiigate how reviewer feedback can be analysed to identify recurring quality-related issues in code changes.  The idea they were working is that review comments are a source of information about software quality. Rather than treating each comment as an isolated request that disappears after the developer makes a correction, this paper analysed many comments to understand recurring problems.
+
+I have cited it because if time permits we thought of providing a component for categorizing reviewer feedback according to understandability. That classification might later be used to analyse understandability concerns across projects to identify recurring quality issues through the review comments.

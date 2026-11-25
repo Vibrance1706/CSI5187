@@ -1,0 +1,136 @@
+Paper 1: Understanding Code Understandability Improvements in Code Reviews
+
+The researchers investigated how developers improve code understandability during real-world code reviews. They collected 2,401 inline review comments from 363 open-source Java projects and manually identified 1,012 comments related to understandability improvements. They then examined a smaller sample in greater detail and identified eight categories of understandability problems, including inadequate documentation, unclear identifiers, unnecessarily complex logic and unnecessary code.
+
+One of the paper's main contributions is the CODE-UP dataset, which provides labelled code-review comments for studying understandability-related concerns.
+
+This paper is directly relevant to our project because we use the CODE-UP dataset to investigate automatic classification. However, the original paper focuses on manually analysing developers' concerns, whereas our project compares two NLP representations: TF-IDF and Sentence Transformer embeddings, with Logistic Regression as the classifier for both approaches.
+
+Our objective is to determine whether semantic representations can classify understandability-related comments more effectively than traditional lexical features. The original paper provides the dataset and motivation for this investigation, but it does not answer our comparative research question. That is what our experiment aims to address.
+
+
+
+Paper 2: Classifying Code Comments in Java Software Systems
+
+The authors investigated whether machine learning could automatically classify comments embedded in Java source code according to their purpose. They analysed six open-source and eight industrial projects, manually classified more than 40,000 lines of comments, and developed a taxonomy containing six main categories and 16 subcategories.
+
+They then trained supervised machine-learning classifiers using features such as word occurrence, comment length, punctuation, position in the file and special tags. Their results were promising: performance was generally high during ten-fold cross-validation, but it declined when models were tested on projects that were not represented in the training data. They also found that adding a relatively small number of manually labelled comments from a new project improved performance.
+
+This paper is relevant to our project because it demonstrates the feasibility of automatically classifying software-related text and highlights the importance of feature selection and evaluation design.
+
+However, there is an important difference. Their task was to classify comments embedded in source code, whereas our project classifies code-review comments according to whether they concern code understandability. We also compare TF-IDF with Sentence Transformer embeddings using the same Logistic Regression classifier.
+
+Therefore, this paper supports the general methodological motivation for our work, but it does not establish whether semantic representations will outperform lexical representations on our dataset.
+
+NOTE: Introduces the idea of cross project validation, that we intend to do
+
+
+
+Paper 3: Sentence-BERT — Sentence Embeddings using Siamese BERT-Networks
+
+The paper introduces Sentence-BERT, a modification of BERT designed to produce fixed-size sentence embeddings that can be compared efficiently using cosine similarity.
+
+The authors explain that conventional BERT processes sentence pairs together, making large-scale similarity comparisons computationally expensive. Sentence-BERT addresses this limitation through a siamese network architecture, in which the same encoder processes each sentence independently. The model is fine-tuned using objectives such as Natural Language Inference so that semantically similar sentences have useful representations in vector space.
+
+Their experiments show that Sentence-BERT outperforms several existing sentence-embedding approaches on multiple semantic similarity benchmarks. They also demonstrate that standard BERT embeddings, without suitable fine-tuning, can perform poorly when used directly for cosine-similarity comparisons.
+
+This paper directly motivates the semantic representation in our project. We compare TF-IDF with Sentence Transformer embeddings while keeping Logistic Regression as the classifier. Our objective is to determine whether semantic representations improve the detection of understandability-related code-review comments.
+
+Proof for all mpnet base v2 is a SBERT, Zero-shot reranking with dense encoder models for news background linking. [Models trained on short-text input (sentences):]
+
+
+
+
+Paper 4: Term-Weighting Approaches in Automatic Text Retrieval
+
+The paper investigates how different term-weighting schemes affect information-retrieval performance. The authors compare 287 distinct weighting methods across six document collections.
+
+Their approach considers three main components: term frequency, inverse document frequency and document-length normalisation. Term frequency captures how often a word occurs in a document, inverse document frequency reduces the influence of terms that appear across many documents, and normalisation helps account for differences in document length.
+
+The experiments show that combining these components generally performs better than simple binary matching or unnormalised weighting on conventional text collections. However, the authors also demonstrate that performance depends on the characteristics of the collection.
+
+This paper provides the theoretical foundation for the TF-IDF baseline in our project. TF-IDF represents each code-review comment using weighted lexical features, and Logistic Regression uses those features to predict whether the comment relates to understandability.
+
+We compare this lexical baseline against Sentence Transformer embeddings to investigate whether semantic representations improve classification. The paper motivates the baseline, but it does not directly compare TF-IDF with transformer embeddings or establish which method will perform better on our dataset.
+
+
+
+Paper 5: What Happens in My Code Reviews? An Investigation on Automatically Classifying Review Changes
+
+he paper investigates whether machine learning can automatically classify changes made during code review and whether developers find the resulting information useful.
+
+The authors use a taxonomy that distinguishes evolvability changes, which improve maintainability without changing functionality, from functional changes, which affect program behaviour. They also introduce four intermediate groups: documentation, visual representation, structure and functional changes.
+
+They build a supervised classification system using 30 features derived from source-code metrics, differences between old and new code, and review-discussion information. They evaluate Random Forest, J48 and Naive Bayes, using techniques such as feature selection, normalisation and SMOTE to address class imbalance.
+
+Their best model achieves an AUC-ROC of 0.91 for the broad classification and between 0.91 and 0.95 for the four change groups. However, functional changes are harder to classify because they are relatively rare.
+
+The authors also interview 12 developers and obtain feedback from 17 developers who assess reports generated for open-source projects. The results suggest that the information is potentially useful, particularly for project managers who want to understand and improve code-review practices.
+
+This paper is relevant to our project because it demonstrates the feasibility of supervised machine learning on software-review data and highlights the importance of class imbalance and appropriate evaluation metrics. However, its task differs from ours: it classifies code modifications rather than identifying understandability-related review comments. Therefore, it provides methodological and domain context rather than direct evidence that either TF-IDF or Sentence Transformer embeddings will perform better in our experiment.
+
+Considerations understood from paper: 
+
+First, both studies use supervised machine learning in software engineering.
+Second, both address the challenge of representing software-related information.
+Third, the paper illustrates why evaluation must consider class imbalance.
+
+IF PROF asks mention they had access to surrounding source code, the researchers of this paper
+
+
+
+
+Paper 6: Leveraging Reviewer Experience in Code Review Comment Generation
+
+The paper addresses a limitation of existing automated code-review models: they treat all training comments equally, even though the quality of feedback may vary with reviewer experience.
+
+The authors propose Experience-Aware Loss Functions, or ELF. They estimate reviewer experience using two ownership metrics: Authoring Code Ownership, which measures code contributions, and Review-Specific Ownership, which measures reviewing activity. These metrics are calculated at repository, subsystem and package levels.
+
+ELF incorporates these experience measures into the model's loss function so that comments associated with more experienced reviewers have greater influence during training. The authors apply the approach to CodeReviewer and compare 12 ELF configurations against the original model and experience-aware oversampling methods.
+
+They evaluate accuracy, informativeness and issue types. Their best configurations produce up to 29% more applicable comments, 56% more suggestions and 129% more comments identifying functional issues. They also find that the models can generate more explanatory feedback and fewer comments focused on trivial formatting concerns.
+
+The study demonstrates that reviewer experience can be a useful training signal for improving automated code-review comment generation. However, experience is only a proxy for comment quality, and the model may lack the project-specific context needed to identify some issues.
+
+This paper is relevant to our project because it discusses code-review quality, understandability-related issues and the importance of context. Nevertheless, the tasks differ. The authors generate comments from code changes, whereas our project classifies existing comments. The paper therefore provides domain motivation rather than direct evidence for the relative performance of TF-IDF and Sentence Transformer embeddings.
+
+Considerations from the paper:
+
+First, both studies address understandability-related concerns in code review.
+Second, the paper demonstrates that comment quality is multidimensional
+Third, the paper highlights the importance of context.
+Fourth, the paper does not establish that semantic embeddings outperform lexical features.	
+
+
+
+
+
+Paper 7: Exploring the Potential of Large Language Models in Fine-Grained Review Comment Classification
+
+The paper addresses the difficulty of classifying code-review comments into detailed categories when the labelled dataset is small and highly imbalanced. The authors investigate whether pretrained LLMs can perform this classification using prompt engineering without task-specific fine-tuning.
+
+The paper used five LLM models. Which is irrelevant to our approach. But the classification of existing code-review comments when dataset is small and highly imbalanced is quite related to our paper.
+
+We decided to retain this in the references for contextual purposes that we might use certain inferences regarding addressing the dataset imbalance and size in our final report.
+
+
+
+
+Paper 8: Supporting the Identification of Prevalent Quality Issues in Code Changes by Analyzing Reviewers’ Feedback (Supportive for choosing all-mpnet-base-v2)
+
+Automatically analyse large collections of code-review comments to discover recurring software quality issues, then use domain experts and LLMs to interpret and name the discovered themes.
+
+They conduct a participatory case study using JabRef, an open-source reference-management application. Their analysis covers 5,560 code-review comments associated with merged and abandoned code changes.
+
+In the modelling for BERTTopic: The authors discuss all-mpnet-base-v2 as an embedding model that achieved high topic coherence in prior work, while their BERTopic implementation explores alternative embedding models.
+
+This paper is relevant to our project because it demonstrates how lexical and semantic NLP techniques can extract useful information from code-review comments. It also highlights the importance of context and human interpretability. However, unlike our project, it focuses on unsupervised topic discovery rather than supervised classification of understandability-related comments. Therefore, it provides motivation for our comparison but does not directly establish whether TF-IDF or Sentence Transformers will perform better.
+
+This has been included for contextual reference as well for the project report and will be removed if deemed unnecessary later on during the implementation.
+
+
+
+
+
+
+One major limitation of our project: Text classification can be sensitive to missing context and differences between projects. Because our classifier uses only review-comment text, it may struggle when understanding a comment requires access to the associated source code or discussion.

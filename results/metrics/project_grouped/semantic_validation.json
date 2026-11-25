@@ -7,7 +7,7 @@
     "standardize_embeddings": false,
     "best_C": 1.0,
     "class_weight": "balanced",
-    "validation_macro_f1": 0.7287157287157287,
     "best_threshold": 0.4665491273905974,
-    "default_threshold_validation_macro_f1": 0.7255019080803053
+    "default_threshold_validation_macro_f1": 0.7255019080803053,
+    "validation_macro_f1": 0.7287157287157287
 }

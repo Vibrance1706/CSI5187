@@ -26,7 +26,7 @@ MODEL_NAME = "sentence-transformers/all-mpnet-base-v2"
 C_OPTIONS = [0.01, 0.1, 1.0, 10.0, 100.0] 
 # NORMALIZE_OPTIONS = [False, True] -- normalize didn't work
 SCALING_OPTIONS = [False, True]
-
+CLASS_WEIGHTS = [None, "balanced"]
 RANDOM_STATE = 42
 BATCH_SIZE = 32
 
@@ -150,38 +150,39 @@ def train_semantic(split_type, embedding_model):
     best_classifier = None
     best_C = None
     best_scaling = None
+    best_class_weight = None
 
 # Compare original MPNet embeddings with standardized embeddings
     for use_scaling in SCALING_OPTIONS:
         for C in C_OPTIONS:
-            classifier = Pipeline([
-                (
-                    "scaler",
-                    StandardScaler() if use_scaling else "passthrough"
-                ),
-                (
-                    "classifier",
+            for class_weight in CLASS_WEIGHTS:
+                classifier = Pipeline([
+                    ("scaler", 
+                     StandardScaler() if use_scaling else "passthrough"
+                    ),
+                    ("classifier",
                     LogisticRegression(
                         C=C,
-                        class_weight="balanced",
+                        class_weight=class_weight,
                         max_iter=2000,
                         random_state=RANDOM_STATE
+                    )   
                     )
-                )
-            ])
+                ])
 
         # Fit the scaler (if enabled) and classifier
         # using training embeddings only.
-            classifier.fit(train_embeddings, y_train)
-            predictions = classifier.predict(val_embeddings)
-            macro_f1 = f1_score(y_val,predictions,average="macro")
-            print(f"StandardScaler: {use_scaling}, "f"C: {C}, " f"Validation Macro-F1: {macro_f1:.4f}")
+                classifier.fit(train_embeddings, y_train)
+                predictions = classifier.predict(val_embeddings)
+                macro_f1 = f1_score(y_val,predictions,average="macro")
+                print(f"StandardScaler: {use_scaling}, "f"C: {C}, " f"Validation Macro-F1: {macro_f1:.4f}")
 
-            if macro_f1 > best_score:
-                best_score = macro_f1
-                best_classifier = classifier
-                best_C = C
-                best_scaling = use_scaling
+                if macro_f1 > best_score:
+                    best_score = macro_f1
+                    best_classifier = classifier
+                    best_C = C
+                    best_scaling = use_scaling
+                    best_class_weight = class_weight
 
 # Generate predictions using the selected pipeline
     # best_predictions = best_classifier.predict(val_embeddings)
@@ -197,6 +198,7 @@ def train_semantic(split_type, embedding_model):
     print(f"\nOptimal threshold: {best_threshold:.4f}")
     print(f"Default threshold Macro-F1: {default_f1:.4f}")
     print(f"Optimized threshold Macro-F1: {best_score:.4f}")
+    print(f"Best class weight: {best_class_weight}")
     
 
 
@@ -228,11 +230,10 @@ def train_semantic(split_type, embedding_model):
         "normalize_embeddings": False,
         "standardize_embeddings": best_scaling,
         "best_C": best_C,
-        "class_weight": "balanced",
-        "validation_macro_f1": best_score,
+        "class_weight": best_class_weight,
         "best_threshold": float(best_threshold),
-    "default_threshold_validation_macro_f1": float(default_f1),
-    "validation_macro_f1": float(best_score)
+        "default_threshold_validation_macro_f1": float(default_f1),
+        "validation_macro_f1": float(best_score)
     }
 
     with open(metrics_dir / "semantic_validation.json", "w", encoding="utf-8") as file:

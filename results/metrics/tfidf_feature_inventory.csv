@@ -1,0 +1,5 @@
+split,feature_type,feature_count
+stratified,word,4622
+stratified,char,30000
+project_grouped,word,4583
+project_grouped,char,30000

@@ -1,0 +1,20 @@
+{
+    "split_type": "project_grouped",
+    "best_hyperparameters": {
+        "word_ngram_range": [
+            1,
+            2
+        ],
+        "char_ngram_range": [
+            3,
+            5
+        ],
+        "min_df": 2,
+        "sublinear_tf": true,
+        "C": 0.1,
+        "class_weight": "balanced"
+    },
+    "validation_macro_f1": 0.7167002012072434,
+    "best_threshold": 0.50020599668006,
+    "default_threshold_validation_macro_f1": 0.7140727714273751
+}

@@ -1,0 +1,20 @@
+{
+    "split": "stratified",
+    "variant": "char_only",
+    "C": 10.0,
+    "class_weight": null,
+    "decision_threshold": 0.4546005662542325,
+    "default_validation_macro_f1": 0.739731266413401,
+    "optimized_validation_macro_f1": 0.7542226359888282,
+    "accuracy": 0.75,
+    "macro_precision": 0.7472766884531591,
+    "macro_recall": 0.7389473684210526,
+    "macro_f1": 0.7414529914529915,
+    "positive_precision": 0.7352941176470589,
+    "positive_recall": 0.6578947368421053,
+    "positive_f1": 0.6944444444444444,
+    "tn": 164,
+    "fp": 36,
+    "fn": 52,
+    "tp": 100
+}

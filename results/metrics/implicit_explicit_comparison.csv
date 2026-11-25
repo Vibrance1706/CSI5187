@@ -1,0 +1,13 @@
+split,category,model,support,true_positives,false_negatives,recall
+stratified,Implicit,tfidf,49,25,24,0.5102040816326531
+stratified,Implicit,semantic,49,36,13,0.7346938775510204
+stratified,Explicit,tfidf,11,7,4,0.6363636363636364
+stratified,Explicit,semantic,11,7,4,0.6363636363636364
+stratified,Unannotated,tfidf,92,59,33,0.6413043478260869
+stratified,Unannotated,semantic,92,66,26,0.717391304347826
+project_grouped,Implicit,tfidf,49,30,19,0.6122448979591837
+project_grouped,Implicit,semantic,49,35,14,0.7142857142857143
+project_grouped,Explicit,tfidf,10,6,4,0.6
+project_grouped,Explicit,semantic,10,6,4,0.6
+project_grouped,Unannotated,tfidf,94,72,22,0.7659574468085106
+project_grouped,Unannotated,semantic,94,74,20,0.7872340425531915

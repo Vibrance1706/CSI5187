@@ -1,0 +1,121 @@
+feature,coefficient,feature_type,ngram,associated_class,split,rank
+word__rename,3.0863800890060915,word,rename,Yes,stratified,1
+word__javadoc,2.800544050777977,word,javadoc,Yes,stratified,2
+word__log,2.4276799136597296,word,log,Yes,stratified,3
+word__name,2.3941312359215736,word,name,Yes,stratified,4
+word__comment,2.386120304337543,word,comment,Yes,stratified,5
+word__is redundant,2.31679077685978,word,is redundant,Yes,stratified,6
+word__link,2.278744318578878,word,link,Yes,stratified,7
+word__a comment,2.272055315294132,word,a comment,Yes,stratified,8
+word__variable,2.2497313510017993,word,variable,Yes,stratified,9
+word__formatting,2.199684249571269,word,formatting,Yes,stratified,10
+word__unused,2.196661188061639,word,unused,Yes,stratified,11
+word__imports,2.193565600982406,word,imports,Yes,stratified,12
+word__line,2.1419711370835,word,line,Yes,stratified,13
+word__i would,1.9578672590647679,word,i would,Yes,stratified,14
+word__constants,1.942043664729126,word,constants,Yes,stratified,15
+word__json,-2.480097334548967,word,json,No,stratified,1
+word__using,-2.4718491335320163,word,using,No,stratified,2
+word__why,-2.4507812020629367,word,why,No,stratified,3
+word__nice,-2.3722216282038486,word,nice,No,stratified,4
+word__final,-2.189771564980805,word,final,No,stratified,5
+word__header,-2.174095848373633,word,header,No,stratified,6
+word__no,-2.0570515418055315,word,no,No,stratified,7
+word__provider,-2.056827820278011,word,provider,No,stratified,8
+word__1,-1.9916682856432024,word,1,No,stratified,9
+word__remove this,-1.92166796013127,word,remove this,No,stratified,10
+word__so,-1.8002448702656983,word,so,No,stratified,11
+word__keep,-1.79162799565351,word,keep,No,stratified,12
+word__port,-1.7420293024550824,word,port,No,stratified,13
+word__for,-1.7253435967186876,word,for,No,stratified,14
+word__4,-1.714919440150582,word,4,No,stratified,15
+char__doc,1.770929514968586,char,doc,Yes,stratified,1
+char__ * ,1.6252054963743519,char, * ,Yes,stratified,2
+char__name ,1.6022062261940344,char,name ,Yes,stratified,3
+char__ nam,1.4382680563117354,char, nam,Yes,stratified,4
+char__ na,1.3432794137648725,char, na,Yes,stratified,5
+char__ name,1.336032923820769,char, name,Yes,stratified,6
+char__ere.,1.2900929816461228,char,ere.,Yes,stratified,7
+char__here.,1.2900929816461228,char,here.,Yes,stratified,8
+char__nam,1.2844195462864523,char,nam,Yes,stratified,9
+char__mment,1.2683553561032312,char,mment,Yes,stratified,10
+char__pli,1.2564502790527978,char,pli,Yes,stratified,11
+char__spa,1.2218506201813981,char,spa,Yes,stratified,12
+char__comme,1.2182299400714989,char,comme,Yes,stratified,13
+char__omme,1.2182299400714989,char,omme,Yes,stratified,14
+char__ommen,1.2182299400714989,char,ommen,Yes,stratified,15
+char__e h,-1.3374642860309147,char,e h,No,stratified,1
+char__nal,-1.2551861538018674,char,nal,No,stratified,2
+char__ce co,-1.2463151924558495,char,ce co,No,stratified,3
+char__ice c,-1.1999855431072821,char,ice c,No,stratified,4
+char__ cre,-1.163174486143051,char, cre,No,stratified,5
+"char__, w",-1.1606621517660565,char,", w",No,stratified,6
+char__hy ,-1.1502754906640238,char,hy ,No,stratified,7
+char__ice,-1.1474192785521977,char,ice,No,stratified,8
+char__why,-1.1444417798659527,char,why,No,stratified,9
+char__why ,-1.1382988265151945,char,why ,No,stratified,10
+char__ tr,-1.1222135046281743,char, tr,No,stratified,11
+"char__e, ",-1.1019618283838049,char,"e, ",No,stratified,12
+char__ cr,-1.0968212364386827,char, cr,No,stratified,13
+char__e and,-1.0790753817883283,char,e and,No,stratified,14
+char__his?,-1.0727443243834907,char,his?,No,stratified,15
+word__suggested change,0.4050452582780447,word,suggested change,Yes,project_grouped,1
+word__suggested,0.4028098687412021,word,suggested,Yes,project_grouped,2
+word__name,0.36589488338364534,word,name,Yes,project_grouped,3
+word__line,0.34592979302320326,word,line,Yes,project_grouped,4
+word__rename,0.323012962008253,word,rename,Yes,project_grouped,5
+word__javadoc,0.31639948023930536,word,javadoc,Yes,project_grouped,6
+word__nit,0.3105061068023898,word,nit,Yes,project_grouped,7
+word__comment,0.26129874947607523,word,comment,Yes,project_grouped,8
+word__string,0.24336398163107517,word,string,Yes,project_grouped,9
+word__remove,0.2390391591471085,word,remove,Yes,project_grouped,10
+word__typo,0.20624911855602446,word,typo,Yes,project_grouped,11
+word__log,0.194949304252789,word,log,Yes,project_grouped,12
+word__link,0.19312064975682347,word,link,Yes,project_grouped,13
+word__unused,0.17848245253211703,word,unused,Yes,project_grouped,14
+word__variable,0.1779386140951196,word,variable,Yes,project_grouped,15
+word__why,-0.33412737029464984,word,why,No,project_grouped,1
+word__for,-0.31909510911057,word,for,No,project_grouped,2
+word__check,-0.2810438521424415,word,check,No,project_grouped,3
+word__final,-0.27647064962075985,word,final,No,project_grouped,4
+word__that,-0.2537730146289831,word,that,No,project_grouped,5
+word__in,-0.25105273876686673,word,in,No,project_grouped,6
+word__we,-0.2477755076361387,word,we,No,project_grouped,7
+word__the,-0.21521437012015138,word,the,No,project_grouped,8
+word__test,-0.20419453661288203,word,test,No,project_grouped,9
+word__so,-0.19365378815692819,word,so,No,project_grouped,10
+word__is,-0.19205306468025035,word,is,No,project_grouped,11
+word__to,-0.1845859878841041,word,to,No,project_grouped,12
+word__using,-0.18132001926085978,word,using,No,project_grouped,13
+word__have,-0.17772909708814483,word,have,No,project_grouped,14
+word__t,-0.17735431876289715,word,t,No,project_grouped,15
+char__nam,0.18030649205360252,char,nam,Yes,project_grouped,1
+char__name,0.17763262912244135,char,name,Yes,project_grouped,2
+char__lin,0.16705590157834366,char,lin,Yes,project_grouped,3
+char__name ,0.15233558379888273,char,name ,Yes,project_grouped,4
+char__doc,0.15158001607624252,char,doc,Yes,project_grouped,5
+char__ame,0.1515285595469755,char,ame,Yes,project_grouped,6
+char__line,0.14739455755361294,char,line,Yes,project_grouped,7
+char__ lin,0.1438214075421509,char, lin,Yes,project_grouped,8
+char__ nam,0.1348735114773975,char, nam,Yes,project_grouped,9
+char__ na,0.13291008667088552,char, na,Yes,project_grouped,10
+char__ name,0.1304949160573516,char, name,Yes,project_grouped,11
+char__comme,0.12954477775237383,char,comme,Yes,project_grouped,12
+char__mmen,0.12954477775237383,char,mmen,Yes,project_grouped,13
+char__omme,0.12954477775237383,char,omme,Yes,project_grouped,14
+char__ommen,0.12954477775237383,char,ommen,Yes,project_grouped,15
+char__ th,-0.13831563187907478,char, th,No,project_grouped,1
+char__inal,-0.13092874605163013,char,inal,No,project_grouped,2
+char__fina,-0.12685652665194258,char,fina,No,project_grouped,3
+char__final,-0.12685652665194258,char,final,No,project_grouped,4
+char__ina,-0.12495150759474,char,ina,No,project_grouped,5
+char__nal,-0.12324792801824688,char,nal,No,project_grouped,6
+char__fin,-0.11726190576802539,char,fin,No,project_grouped,7
+char__test,-0.11597573659959703,char,test,No,project_grouped,8
+char__hy ,-0.11374731062715036,char,hy ,No,project_grouped,9
+char__why,-0.11374731062715036,char,why,No,project_grouped,10
+char__why ,-0.11374731062715036,char,why ,No,project_grouped,11
+char__t t,-0.11055415085550084,char,t t,No,project_grouped,12
+char__for ,-0.10743604932969192,char,for ,No,project_grouped,13
+char__st ,-0.10721972956844614,char,st ,No,project_grouped,14
+char__ for ,-0.10575993889750313,char, for ,No,project_grouped,15

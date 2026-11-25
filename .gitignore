@@ -1,0 +1,22 @@
+# Virtual environments
+nlp_ml/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Experimental backups
+results_backup_before_class_weight/
+*before_class_weight.csv
+
+# Temporary files
+*.tmp
+
+# Environment secrets
+.env
